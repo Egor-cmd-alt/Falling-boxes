@@ -28,15 +28,6 @@ window.bind('<Left>', lambda event: Control.move(canvas, -1, 0))
 window.bind('<Right>', lambda event: Control.move(canvas, 1, 0))
 
 def f():
-    for i in range(Model.size):
-        for j in range(Model.size):
-                if Model.maze[i][j] == 3:
-
-                    canvas.create_rectangle(r * i + 100, r * j + 100, r * i + r + 100, r * j + r + 100, fill='blue')
-                    Model.maze.insert(j, 0)
-                    i += 1
-                    Model.maze.insert(j, 3)
-                    canvas.create_rectangle(r * i + 100, r * j + 100, r * i + r + 100, r * j + r + 100, fill='yellow')
-    window.after(10000, lambda: f())
+    pass
 f()
 window.mainloop()
