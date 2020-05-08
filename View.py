@@ -14,36 +14,34 @@ for i in range(Model.size):
     for j in range(Model.size):
         if Model.maze[i][j] == 1:
             color = 'brown'
-        elif Model.maze[i][j] == 2:
-            color = 'pink'
+            tag='ground'
+        elif Model.maze[i][j] == 0:
+            color = 'blue'
+            tag='fon'
         elif Model.maze[i][j] == 3:
             color = 'yellow'
+            tag='box'
         else:
-            color = 'blue'
-        canvas.create_rectangle(r * i + 100, r * j + 100, r * i + r + 100, r * j + r + 100, fill=color)
+            color = 'pink'
+            tag = 'i'
 
-def f():
-    global n
-    for i in Model.maze:
-        for j in Model.maze:
-            if j == 3:
-                Model.maze[i].insert(j, 0)
-                canvas.create_rectangle(r * i + 100, r * j + 100, r * i + r + 100, r * j + r + 100, fill='blue')
-                j += 1
-                Model.maze[i].insert(j, 3)
-                canvas.create_rectangle(r * i + 100, r * j + 100, r * i + r + 100, r * j + r + 100, fill='yellow')
-    window.after(1000, lambda: (f()))
-    n += 1
+        canvas.create_rectangle(r * i + 100, r * j + 100, r * i + r + 100, r * j + r + 100, fill=color, tag=tag)
 
-n = 1
-while n != 16:
-    f()
+def move(canvas,a,b):
+    Control.move(canvas,a,b)
 
 
-window.bind('<Up>', lambda event: Control.move(canvas, 0, -1))
-window.bind('<Down>', lambda event: Control.move(canvas, 0, 1))
-window.bind('<Left>', lambda event: Control.move(canvas, -1, 0))
-window.bind('<Right>', lambda event: Control.move(canvas, 1, 0))
+
+
+
+
+
+
+
+window.bind('<Up>', lambda event: move(canvas, 0, -r))
+window.bind('<Down>', lambda event: move(canvas, 0, r))
+window.bind('<Left>', lambda event: move(canvas, -r, 0))
+window.bind('<Right>', lambda event: move(canvas, r, 0))
 
 
 window.mainloop()
