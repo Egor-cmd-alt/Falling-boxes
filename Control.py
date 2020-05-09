@@ -2,8 +2,6 @@ import Model
 
 r = 30
 
-
-
 def move(canvas, a, b):
     if canvas.coords('i')[3] < 610 and canvas.coords('i')[0] > 100 and canvas.coords('i')[2] < 700 and canvas.coords('i')[1] > 100:
         canvas.move('i', a, b)
@@ -27,3 +25,7 @@ def move(canvas, a, b):
             canvas.move('i', 0, b)
         else:
             canvas.move('i', a, b)
+
+def go(canvas,dx,dy):
+    if canvas.coords('box')[3] < 610:
+        canvas.move('box', dx, dy)
