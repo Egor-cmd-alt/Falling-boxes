@@ -1,17 +1,29 @@
 import Model
 
 r = 30
-y = Model.meY
-x = Model.meX
+
 
 
 def move(canvas, a, b):
-    global x, y
-    if Model.maze[x][y] == 1 or x>19 or x<0 or y>19 or y<0:
-        x += 0
-        y += 0
-    elif Model.maze[x][y] == 0 or Model.maze[x][y] == 2:
-        canvas.move('i',a,b)
-    elif Model.maze[x + a][y + b] == 3:
-        x+=0
-        y+=0
+    if canvas.coords('i')[3] < 610 and canvas.coords('i')[0] > 100 and canvas.coords('i')[2] < 700 and canvas.coords('i')[1] > 100:
+        canvas.move('i', a, b)
+    elif canvas.coords('i')[3] == 610:
+        if b == r :
+            canvas.move('i', a, 0)
+        else:
+            canvas.move('i', a, b)
+    elif  canvas.coords('i')[0] == 100:
+        if a == 5 :
+            canvas.move('i', a, b)
+        else:
+            canvas.move('i', 0, b)
+    elif canvas.coords('i')[1] == 100:
+        if b == r :
+            canvas.move('i', a, b)
+        else:
+            canvas.move('i', a, 0)
+    elif canvas.coords('i')[2] == 700:
+        if a == 5 :
+            canvas.move('i', 0, b)
+        else:
+            canvas.move('i', a, b)
