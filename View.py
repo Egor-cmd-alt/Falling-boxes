@@ -36,17 +36,16 @@ def move(canvas,a,b):
     Control.move(canvas,a,b)
     print(canvas.coords('i'))
 
-def go(dx,dy):
-        canvas.move("box", dx, dy)
-
 
 def f():
-    go(dx, dy)
+    Control.go(canvas,dx, dy)
     window.after(50, lambda: f())
 
 f()
 
-
+def back(bx,by):
+    pass
+#функция имитирующая прыжок. То есть возвращает игрока через некоторое время назад вниз, если тот прыгнул
 
 
 
@@ -57,3 +56,4 @@ window.bind('<Right>', lambda event: move(canvas, 5, 0))
 
 
 window.mainloop()
+
