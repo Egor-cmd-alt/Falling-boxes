@@ -1,6 +1,8 @@
 import Model
 import Control
 import tkinter as tk
+import random
+
 
 window = tk.Tk()
 window.geometry("1200x700")
@@ -34,16 +36,17 @@ dy=1
 
 def move(canvas,a,b):
     Control.move(canvas,a,b)
-    print(canvas.coords('i'))
 
 
 def f():
     Control.go(canvas,dx, dy)
     window.after(50, lambda: f())
+    if canvas.coords('box')[3] == 610:
+        canvas.create_rectangle(r * random.randint(0,19) + 100, r * 1 + 100, r * random.randint(0,19)  + r + 100, r * 1 + r + 100, fill='yellow', tag='box')
 
 f()
 
-def back(bx,by):
+def back(canvas,bx,by):
     pass
 #функция имитирующая прыжок. То есть возвращает игрока через некоторое время назад вниз, если тот прыгнул
 
@@ -56,4 +59,5 @@ window.bind('<Right>', lambda event: move(canvas, 5, 0))
 
 
 window.mainloop()
+
 
